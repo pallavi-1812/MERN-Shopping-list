@@ -9,6 +9,12 @@ body {
 .shopping-list {
   margin-top: 1rem;
 }
+.show {
+  opacity: 1;
+}
+.add-btn {
+  font-size: 1.5rem;
+}
 .remove-btn {
   margin-right: 0.5rem;
 }
