@@ -1,32 +1,33 @@
-import { v1 as uuid } from "uuid";
-import { ADD_ITEM, GET_ITEM, DELETE_ITEM } from '../actions/types';
+import { ADD_ITEM, GET_ITEM, DELETE_ITEM, ITEMS_LOADING } from '../actions/types';
 
 const initialState = {
-    items: [
-        { id: uuid(), name: 'Eggs' },
-        { id: uuid(), name: 'Milk' },
-        { id: uuid(), name: 'Bread' },
-        { id: uuid(), name: 'Salt' }
-    ]
+    items: [],
+    loading: false
 }
 
 const itemReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_ITEM:
-            console.log('state');
             return {
                 ...state,
                 items: [action.payload, ...state.items]
             };
         case GET_ITEM:
             return {
-                ...state
+                ...state,
+                items: action.payload,
+                loading: false
             };
         case DELETE_ITEM:
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== action.payload)
+                items: state.items.filter(item => item._id !== action.payload)
+            };
+        case ITEMS_LOADING:
+            return {
+                ...state,
+                loading: true
             };
         default:
             return state;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
-import { v1 as uuid } from "uuid";
 import { connect } from 'react-redux';
 import { addItems } from '../actions/itemAction';
 import store from '../store';
@@ -22,7 +21,6 @@ const ItemModal = () => {
         event.preventDefault();
 
         const newItem = {
-            id: uuid(),
             name
         };
 
